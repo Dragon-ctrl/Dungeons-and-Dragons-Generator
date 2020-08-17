@@ -1,0 +1,131 @@
+import random
+#character generator
+#NAMES
+names = ["Fotthyia","Phouope","Groeaameia","Orera","Hiosyle","Uthroepadia","Parayme","Celaopeia","Kiomnipadia","Krythethya","Lommuth","Fothumi","Rundronlir","Throlgrus","Mukgraek","Thirbami",
+         "Gakdril","Dougrath","Snakgrarlun","Durbuid","Gawain","Kerwin","Tristan","Gwyn","Taliesin","Eirwyn","Caerau","Cynbel","Govannon","Pryderi","Griffeth","Mael",
+         "Moren","Gwydion","Cai","Lewys","Cadwgan","Aneirin","Saith","Aaron","Abaddon","Abeiron","Abioud","Abiron","Abraam","Abram","Abraxas","Achaikos","Achaz","Achim",
+         "Adam","Adamos","Adelphos","Adonis","Adrastos","Aegidios","Aeolos","Aethon","Aeton","Agamemnon","Agapetos","Agapios","Agathangelos","Agathias","Agathon","Agrippas","Aias",
+         "Aigidos","Aineas","Aineias","Aiolos","Aischylos","Aiskhulos","Aison","Aisopos","Aither","Akakios","Akhilleus","Akrisios","Akiaion","Akylas","Alastor","Alexanderus","Alexanderos",
+         "Alexio","Alexios","Alkaios","Alkandros","Alkimos","Alphaios","Amarandos","Amarandos","Amaranthos","Amarantos","Ambrosios","Amen","Amenophis","Aminadab","Ammon","Amon","Amos","Amosis",
+         "Amoun","Ampelios","Amphion","Amun","Amyntas","Anakletos","Anargyros","Anastasios","Anatolios","Andonios","Andonis","Andreas","Androkles","Andronikos","Angelos","Aniketos","Annas",
+         "Antigonos","Antipas","Antipatros","Antonios","Antonis","Anubis","Aphrodisios","Apollodoros","Apollon","Apollonios","Apollos","Apollyon","Apophis","Apostolis","Apostolos","Aram","Archelaos",
+         "Archimedes","Archippos","Ares","Argos","Argyris","Argyros","Arkadios","Arktophonos","Arphaxad","Arsenios","Artaxerxes","Artaxes","Artaxis","Artemas","Artemidoros","Artemisios","Artemus",
+         "Asklepiades","Asklepios","Athamas","Athanas","Athanas","Athanasios","Athos","Athas","Atreus","Attis","Azarias","Baal","Baal Zebul","Bakchos","Bakkhos","Balios","Baltasar","Baltazar",
+         "Barabbas","Barak","Bariesou","Bariesou","Barnabas","Barnabas","Barsabbas","Bartholomaios","Basileus","Beelzeboul","Beelzebul","Beniamin","Bion","Blasios","Bonerges","Charalampos",
+         "Chariton","Christianos","Christophoros","Christos","Chrysanthos","Cronos","Daidalos","Damianos","Damokles","Damon","Daniel","Dareios","Dauid","Deimos","Delphinos","Demetrios","Demogorgon",
+         "Demokritos","Demon","Demosthenes","Demostrate","Deucalion","Diablos","Didymos","Dimitrios","Dimitris","Dimosthenis","Diodoros","Diodotos","Diogenes","Diokles","Diomedes","Dionysos",
+         "Dioskouroi","Dorieus","Doros","Dorotheos","Drakon","Dysmas","Eber","Efraim","Efstathios","Eirenaios","Ektor","Eleftherios","Eleutherios","Eliakim","Elias","Elioud","Elpidous","Emmanouel",
+         "Eosphoros","Epaphras","Epaphroditos","Ephraim","Epiktetos","Erasmos","Erastos","Erebos","Eros","Errikos","Esaias","Esau","Esdras","Eton","Euandros","Euaristos","Eugenios","Eukleides",
+         "Eulalios","Euphemios","Euphranor","Euripides","Eusebios","Eustakkhios","Eustathios","Eustorgios","Euthymios","Eutropios","Eutychos","Evangelos","Fotios","Fotis","Gabriel","Gad","Gaios",
+         "Galen","Gennadios","Georgios","Gerasimos","Gerbasios","Gervasios","Gog","Gregorios","Habel","Hades","Haemon","Haides","Haimon","Halphaios","Hananias","Heber","Hektor","Heli","Heliodoros",
+         "Helios","Helladios","Hellen","Henoch","Hephaistos","Heracles","Heracclios","Herakleides","Herakleitos","Herakles","Hermes","Hermogenes","Hermokrates","Hermolaos","Herodes","Herodion",
+         "Herodotos","Hesiod","Hesiodos","Hesperos","Hesperus","Hieronymos","Hilarion","Hippokrates","Hipolytos","Homer","Homeros","Horos","Hyankinthos","Hyginos","Hymen","Hymenaios","Hypatios",
+         "Hypatos","Iaeiros","Iairos","Ikchos","Iakkhos","Iakob","Iakobos","Ianos","Iaret","Iason","Idouma","Iephthae","Iermias","Iericho","Iesos","Iesous","Ikaros","Ioakeim","Ioannes","Ioannis",
+         "Iob","Ioel","Ionas","Ioram","Iordanes","Iosaphat","Ioseph","Ioses","Iosias","Ioudas","Ioulios","Ioustos","Iovilios","Isaak","Isidoros","Isokrates","Kadmos","Kain","Kainam","Kaiaphas",
+         "Kaisar","Kallias","Kallikrates","Kallistos","Kallistrates","Kallistratos","Kalogeros","Kambyses","Kapaneus","Karpos","Kastor","Kephalos","Kephas","Kepheus","Kerberos","Keyx","Kharon",
+         "Kheiron","Khristophoros","Khristos","Khrysaor","Khryses","Khthonios","Kimon","Klaudios","Kleisthenes","Kleitos","Klementos","Klemes","Kleopas","Kleopatros","Klephas","Klopas","Konstantinos",
+         "Kornelios","Kosmas","Kosmos","Kreios","Kreon","Krios","Kronos","Kyprianos","Kyriakos","Kyrillos","Kyrillos","Kyros","Ladon","Lamech","Lapidos","Lapidot","Lapidoth","Latinos","Lavrentios",
+         "Lazaros","Leandros","Lebbaios","Lefteris","Leon","Leonidas","Leui","Leuis","Linos","Lot","Loukanos","Loukas","Loukianos","Loup","Lykaon","Lykourgos","Kysandros","Lysimachos","Lysistratos",
+         "Makarios","Makednos","Makedon","Maksimos","Manasses","Mardochaios","Markos","Maththaios","Maththias","Mattathios","Matthan","Meleagros","Menelaos","Mentor","Methodios","Metrophanes",
+         "Michael","Midas","Miltiades","Minos","Mnason","Monimos","Morpheus","Mouses","Moyses","Myron","Nabadias","Nabuchodonosor","Nachor","Naos","Narkissos","Natham","Nathanael","Nazoraios",
+         "Neoptolemos","Nerus","Nestor","Nicholas","Nikator","Nikandros","Nikephoros","Nikias","Nikodemos","Nikola","Nikolaos","Nikolas","Nikomachos","Nikomedes","Nikon","Nikostratos","Nileas",
+         "Noe","Nomiki","Odysseus","Oidipous","Oineus","Okeanos","Olympos","Olysseus","Onesimos","Onesiphoros","Ophelos","Ophion","Ophiouchos","Ophiuchus","Orestes","Origen","Origenes","Orion",
+         "Orpheus","Osiris","Oulixes","Oulixeus","Ouranos","Ourbanos","Ourias","Paian","Paion","Palaimon","Palinouros","Pallas","Pamphilos","Pan","Panagiotakis","Panagiotis","Panayiotis","Pandaros",
+         "Pankratios","Panoptes","Panos","Panteleimon","Pantheras","Paramonimos","Paramonos","Paris","Patrikios","Patroklos","Paulos","Pavlos","Pegasos","Pelagios","Perikles","Persus","Petros",
+         "Phaeton","Phaidros","Phallas","Phanes","Pharao","Phelix","Phestos","Philandros","Philemon","Philetos","Philippos","Philokrates","Philomelos","Philomenos","Philon","Philotheos","Phlegon",
+         "Phobos","Phoibos","Phoinix","Phokas","Pholos","Phorkys","Phosphoros","Photios","Phrenicos","Phrixos","Phtha","Phyllidos","Pilatos","Platon","Ploutarchos","Plouton","Podarge","Polydeukes",
+         "Polydoros","Polykarpos","Pontios","Pontos","Porphyrios","Poseidon","Poseidonios","Posidonios","Praxis","Praxiteles","Priam","Priamos","Prochoros","Prokopios","Prometheus","Proteus",
+         "Ptolemaios","Ptolemy","Ptoophagos","Puroeis","Pyrois","Pyrrhos","Pyrros","Pythagoras","Pytheos","Pythias","Pythis","Pythios","Raphael","Rhama","Rhoubem","Sabaoth","Sabbas","Samouel",
+         "Samoul","Sampson","Sanacharibos","Saoul","Satan","Satanas","Saulos","Savas","Savvas","Sebastianos","Seilenos","Seleukos","Serafeim","Sergios","Seth","Sethi","Sethos","Silas","Silenos",
+         "Silouanos","Simon","Simonidea","Sokrates","Sol","Solomon","Solon","Sophokles","Sophos","Sophokles","Sophos","Sophronios","Sosigenes","Sostratos","Sotirios","Sotiris","Spartakos",
+         "Spiridion","Spiro","Spiros","Spyridon","Spyro","Spyros","Stamatios","Stamati","Stathis","Stavros","Stefanos","Stelios","Stephanos","Straton","Stylianos","Symeon","Takis","Taras",
+         "Tarasios","Telamon","Telamonian","Telamonion","Telesphoros","Terentios","Teris","Thaddaios","Thales","Than","Thanatos","Thanos","Themistokles","Theodoros","Theodosios","Theodotos",
+         "Theoodulos","Theokritos","Theodoulos","Theokritos","Theokles","Theophanes","Theophilos","Theophylaktos","Therapon","Theristis","Theron","Theseus","Thomas","Thoth","Thoukudides",
+         "Thoukydides","Timaios","Timo","Timon","Timotheos","Titan","Titanos","Titos","Tobias","Tobit","Triton","Tritonos","Tryphon","Tychon","Usiris","Vangelis","Vasilios","Vasilis",
+         "Vlasios","Vlasis","Xan","Xanthippos","Xanthos","Xenocrates","Xenon","Xenophon","Xerxes","Yanni","Yannis","Yianni","Yiannis","Yiorgos","Yorgos","Zacharias","Zakchaios","Zakharis",
+         "Zakkhaios","Zara","Zebedaios","Zenobios","Zenon","Zephyr","Zephyros","Zeus","Zopyros","Zoroastres","Zorobabel","Zosimos","Zotikos","Dubnotalus","Condarillus","Sacrovir","Esumagius",
+         "Rituvvecas","Cintugenus","Maccis","Taurou","Tanco","Reovalis","Banni","Vlatucni","Corbagni","Fearghas","Simidh","Aodh","Uailean","Torcull","Adrienn","Agi","Agnes","Agota","Alida",
+         "Aliz"]
+
+races = ["Aarakocra","Aasimar","Aven","Centaur","Changling","Dragonborn","Drow","Dwarf","Genasi","Gnome","Goblin","Grung","Half-Elf","Halfling","Half-Orc","High Elf","Hobgoblin","Human","Kalashtar","Khnera","Kobold","Kor","Lizardfolk","Loxodon","Mind Flayer","Minotaur","Orc","Satyr","Shifter","Simic Hybrid","Tabaxi","Tiefling","Tortle","Triton","Vampire","Vedalken","Viashino","Warforged","Wolfborn","Wood Elf","Yuan-Ti","Kenku"]
+classes = ["Artificer","Barbarian","Bard","Blood Hunter","Cleric","Druid","Fighter","Monk","Mystic","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"]
+alignment = ["Lawful Good","Neutral Good","Chaotic Good","Lawful Neutral","True Neutral","Chaotic Neutral","Lawful Evil","Neutral Evil","Chaotic Evil"]
+gender = ["Male","Female"]
+occupation = ["Armorer","Apothecary","Artist","Astrologer","Atilliator","Baker","Barber","Blacksmith","Bottler","Butler","Bower","Candlemaker","Carpenter","Castellan","Chamberlain","Chancellor","Chaplain","Clerk","Clothing","Constable","Cook","Cordwainer","Cottar","Ditcher","Ewerer","Fletcher","Gardner","Herald","Herbalist","Janitor","Jester","Wardrober","Knight","Marshal","Messenger","Minstrel","Moneylender","Page","Painter","Porter","Physician","Potter","Reeve","Scribe","Scullion","Sheriff","Spinster","Steward","Squire","Watchman","Shipmaker","Tailor","Alchemist","Farmer","Fisherman","Merchant","Jewler","Cloth Maker","Acolyte","Anthropologist","Archeologist","Charlatan","Courtier","Criminal","Dissenter","Entertainer","Folk Hero","Gate Urchin","Gladiator","Harborfolk","Unemployed","Guild Member","Investigator","Noble","Pirate","Sailor","Spy","Soldier","Bounty Hunter","Guard","Hunter"]
+age = ["Child","Teenager","Young Adult","Adult","Middle-Aged","Old"]
+voice = ["Speaks fast with a lisp","Deep voice with rolling R's","Pronounces most S's like Z's","French accent","Low and grunting","High pitched and excited","Often laughs before speaking","Relaxed with a lot of content humming","Spanish accent","Scratchy and weak","Posh accent","Mostly speaks with clenched teeth","Soft and melodious","Pronounces most O's like U's","Eastern European accent","Old and thin voice","Farmer's accent","Puts emphasis on the wrong part of words","Slow speaker","Russian accent","Whispering most of the time","Yelps nervously whilst speaking","Sighs with exhaustion a lot","Frivolous and kind","Scottish accent","Uses the word 'Darling' a lot","Loud with a lot of bravado","Dutch accent","Often pauses mid-sentence to think","Australian accent","Pre-pubescent and boyish","Notes of animalistic growling and snarling","Smooth and feminine","Raspy","Italian accent","Excited and jittery","Warm and comforting","Middle-eastern accent","Inhaling and exhaling with a thin wheeze","Voice often breaking","Half singing most sentences","Speaks in the back of the mouth","Scandinavian accent","Speaks like royalty, uses complex vocabulary","Words like 'its' and 'is' become 'eats' and 'ease'","Vocalizes with an open throat","Skittish","Jamacian accent","Frightful","Hard of hearing, loud","Dark and ominous tone","American accent","Smacks lips whilst talking","Monstorus and snarling","Gruff and masculine","Vocalizes in the front of the mouth","Tuts and clicks tongue a lot","Adds syllables to words to emphasize","Vocalizes with a squeezed throat","Squeaky","Pirate accent","Speaks like their tongue is numb","Classic creaky witch voice","Spits and sputters whilst talking","Thin and often mumbling","Speaks with their lower jaw jutted out","Irish accent","Soothing and warm","Keeps vowels as short as possible","Low rumbling, the words strung together","Strong lisp","Cold and demanding tone","Mid range voice","German accent","Speaks with lips slightly pursed","Speaks in a third person about themselves","Relaxed voice","Sensual and smooth","Low range voice","Switches between two types of voices","Mumbles notes to self in between sentences","Indian accent","Agressive tone","Draws out most vowels when speaking","Nasal tone","High range voice","Often pronounces difficult words wrong","Forgets to breathe when speaking","Hollow sounding voice","Switches between three voices","Uses sign language","Slurs words","Voice like an elderly individiual","Speaks as if they have a cold/blocked nose","Uses figure of speech often","Often spits out words with contempt","Uses the words/sounds 'uh' and 'uhm' a lot","Rhymes sentences often","Sore throat, coughing a lot","High pitched and slightly raspy"]
+#subclasses
+artificersubclass = ["Alchemist","Artillerist","Battlesmith"]
+barbariansubclass = ["Path of the Berserker","Path of the Totem Warrior","Path of the Battlerager","Path of the Ancestral Guardian","Path of the Storm Herald","Path of the Zealot"]
+bardsubclass = ["College of Lore","College of Valor","College of Glamor","College of Swords","Colllege of Whispers","College of Eloquence"]
+bloodhuntersubclass = ["Order of the Ghostslayer","Order of the Lycan","Order of the Mutant","Order of the Profane Soul"]
+clericsubclass = ["Knowledge Domain","Life Domain","Light Domain","Nature Domain","Tempest Domain","Trickery Domain","War Domain","Arcana Domain","Forge Domain","Grave Domain","Order Domain","Death Domain"]
+druidsubclass = ["Circle of the Land","Circle of the Moon","Circle of Dreams","Circle of the Shepherd","Circle of Spores"]
+fightersubclass = ["Champion","Battle Master","Eldritch Knight","Purple Dragon Knight","Arcane Archer","Cavalier","Samurai","Echo Knight"]
+monksubclass = ["Way of the Open Hand","Way of the Shadow","Way of the Four Elements","Way of the Long Death","Way of the Sun Soul","Way of the Drunken Master","Way of the Kensei"]
+mysticsubclass = ["Order of the Avatar","Order of the Awakened","Order of the Immortal","Order of the Nomad","Order of the Soul Knife","Order of the Wu Jin"]
+paladinsubclass = ["Oath of Devotion","Oath of the Ancients","Oath of Vengeance","Oath of the Crown","Oath of Conquest","Oath of Redemption","Oath of Glory","Oathbreaker"]
+rangersubclass = ["Hunter","Beast Master","Gloom Stalker","Horiszon Walker","Monster Slayer"]
+roguesubclass = ["Assassin","Thief","Arcane Trickster","Mastermind","Swashbuckler","Inquisitive","Scout"]
+sorcerersubclass = ["Draconic Bloodline","Wild Magic","Storm Sorcerer","Divine Soul","Shadow Magic"]
+warlocksubclass = ["The Archfey","The Fiend","The Great Old One","The Undying","The Celestial","The Hexblade"]
+wizardsubclass = ["School of Abjuration","School of Conjuration","School of Divination","School of Enchantment","School of Evocation","School of Illusion","School of Necromancy","School of Transmutation","Bladesinging","War Magic","Chronurgy Magic","Graviturgy Magic"]
+
+
+#Number of characters to generate:
+times = input("How many characters would you like to generate?")
+timesnum = int(times) + 1
+
+#file = open('Characters Generated.txt', 'w+')
+
+def chargenfunct():
+    classesdict = {
+        classes[0] : random.choice ( artificersubclass ),
+        classes[1] : random.choice ( barbariansubclass ),
+        classes[2] : random.choice ( bardsubclass ),
+        classes[3] : random.choice ( bloodhuntersubclass ),
+        classes[4] : random.choice ( clericsubclass ),
+        classes[5] : random.choice ( druidsubclass ),
+        classes[6] : random.choice ( fightersubclass ),
+        classes[7] : random.choice ( monksubclass ),
+        classes[8] : random.choice ( mysticsubclass ),
+        classes[9] : random.choice ( paladinsubclass ),
+        classes[10] : random.choice ( rangersubclass ),
+        classes[11] : random.choice ( roguesubclass ),
+        classes[12] : random.choice ( sorcerersubclass ),
+        classes[13] : random.choice ( warlocksubclass ),
+        classes[14] : random.choice ( wizardsubclass )
+
+    }
+    print ( "Name: " + random.choice ( names ) )
+    print ( "Race: " + random.choice (races))
+    print ( "Class: " + str(random.choice(list(classesdict.items()))))
+    print ( "Alignment: " + random.choice ( alignment ) )
+    print ( "Gender: " + random.choice ( gender ) )
+    print ( "Occupation: " + random.choice ( occupation ) )
+    print ( "Age: " + random.choice ( age ) )
+    print ( "Voice: " + random.choice ( voice ) )
+    print ( "                " )
+    print ( "Character Stats" )
+    print ( "AC = " + str ( random.randrange ( 10, 18 ) ) )
+    print ( "STR = " + str ( random.randrange ( 10, 18 ) ) )
+    print ( "DEX = " + str ( random.randrange ( 10, 18 ) ) )
+    print ( "CON = " + str ( random.randrange ( 10, 18 ) ) )
+    print ( "INT = " + str ( random.randrange ( 10, 18 ) ) )
+    print ( "WIS = " + str ( random.randrange ( 10, 18 ) ) )
+    print ( "CHAR = " + str ( random.randrange ( 10, 18 ) ) )
+
+def charagen():
+    loop = 1
+    charnum = 1
+    while loop == 1:
+        while charnum >= 1:
+            print("Character " + str(charnum))
+            str(chargenfunct())
+            print("----------------")
+            charnum += 1
+            loop += 1
+            if loop == timesnum :
+                break
+
+charagen()
